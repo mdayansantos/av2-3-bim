@@ -20,7 +20,7 @@ model Store {
   id        Int      @id @default(autoincrement())
   name      String
   userId    Int
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   products  Product[]
   @@map("Stores")
 }
@@ -30,6 +30,6 @@ model Product {
   name     String
   price    Float
   storeId  Int
-  store    Store    @relation(fields: [storeId], references: [id])
+  store    Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
   @@map("Products")
 }
